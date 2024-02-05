@@ -69,6 +69,10 @@ function Wallet() {
       console.log("Submission successful", result);
       setUserTarget("");
       setAmount("");
+      fetchWallet({
+        user,
+        setWallet,
+      });
     } catch (error) {
       console.error("Submission failed", error);
     }
@@ -103,6 +107,10 @@ function Wallet() {
       console.log("Submission successful", result);
       setUserTarget2("");
       setAmount2("");
+      fetchWallet({
+        user,
+        setWallet,
+      });
     } catch (error) {
       console.error("Submission failed", error);
     }

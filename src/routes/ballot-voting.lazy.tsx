@@ -71,6 +71,8 @@ function BallotVoting() {
       const result = await response.json(); // Assuming server responds with JSON
       // setResponse(result);
       alert("Submission successful");
+      fetchBallot({ setBallots });
+      fetchWinner({ setWinners });
       console.log("Submission successful", result);
       setDuration("");
       setEventName("");
@@ -106,6 +108,8 @@ function BallotVoting() {
       const result = await response.json(); // Assuming server responds with JSON
       // setResponse(result);
       alert("Submission successful");
+      fetchBallot({ setBallots });
+      fetchWinner({ setWinners });
       console.log("Submission successful", result);
       setBallot("");
     } catch (error) {

@@ -1,14 +1,5 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  Card,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import {
   DropdownMenuTrigger,
   DropdownMenuLabel,
@@ -17,13 +8,20 @@ import {
   DropdownMenuContent,
   DropdownMenu,
 } from "@/components/ui/dropdown-menu";
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import {
+  createRootRoute,
+  Link,
+  Outlet,
+  useMatchRoute,
+} from "@tanstack/react-router";
+import { clsx } from "clsx";
 
 export const Route = createRootRoute({
   component: Layout,
 });
 
 function Layout() {
+  const matchRoute = useMatchRoute();
   return (
     <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
@@ -41,7 +39,10 @@ function Layout() {
           <div className="flex-1 overflow-auto py-2">
             <nav className="grid items-start px-4 text-sm font-medium">
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/" }) && "bg-gray-300",
+                )}
                 to="#"
               >
                 <HomeIcon className="h-4 w-4" />
@@ -49,7 +50,10 @@ function Layout() {
               </Link>
               {/* Blockchain NodeJS */}
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/simple-blockchain" }) && "bg-gray-300",
+                )}
                 to="simple-blockchain"
               >
                 <ShoppingCartIcon className="h-4 w-4" />
@@ -57,49 +61,70 @@ function Layout() {
               </Link>
               {/* Pemungutan Suara */}
               <Link
-                className="flex items-center gap-3 rounded-lg bg-gray-100 px-3 py-2 text-gray-900  transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/ballot-voting" }) && "bg-gray-300",
+                )}
                 to="ballot-voting"
               >
                 <PackageIcon className="h-4 w-4" />
                 Ballot Voting
               </Link>
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/wallet" }) && "bg-gray-300",
+                )}
                 to="wallet"
               >
                 <UsersIcon className="h-4 w-4" />
                 Blockchain Wallet
               </Link>
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/nft-market" }) && "bg-gray-300",
+                )}
                 to="nft-market"
               >
                 <BlobIcon className="h-4 w-4" />
                 NFT Marketplace
               </Link>
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/todos" }) && "bg-gray-300",
+                )}
                 to="todos"
               >
                 <StarIcon className="h-4 w-4" />
                 pChain ToDo List
               </Link>
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/event" }) && "bg-gray-300",
+                )}
                 to="event"
               >
                 <RocketIcon className="h-4 w-4" />
                 Events
               </Link>
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/documentation" }) && "bg-gray-300",
+                )}
                 to="documentation"
               >
                 <AbstractIcon className="h-4 w-4" />
                 Documentation
               </Link>
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                className={clsx(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all  hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50",
+                  matchRoute({ to: "/slides" }) && "bg-gray-300",
+                )}
                 to="slides"
               >
                 <LineChartIcon className="h-4 w-4" />

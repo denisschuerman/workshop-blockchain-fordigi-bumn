@@ -13,11 +13,14 @@ router.get("/", async (req, res) => {
     take: limitNumber,
     skip: skip,
   });
+
+  const total = await prisma.event.count();
   res.status(200).send({
     status: [200, "ok"],
     data: events,
     page: pageNumber,
     limit: limitNumber,
+    total: total,
   });
 });
 

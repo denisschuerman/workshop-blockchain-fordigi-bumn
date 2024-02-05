@@ -27,7 +27,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { fetchEvents } from "@/api/repository";
+import { fetchPaginatedEvents } from "@/api/repository";
 
 export const Route = createLazyFileRoute("/event")({
   component: Event,
@@ -36,10 +36,13 @@ export const Route = createLazyFileRoute("/event")({
 function Event() {
   const [events, setEvents] = React.useState();
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [page, setPage] = React.useState(1);
+  const [pageCount, setPageCount] = React.useState(1);
+  const limit = 5;
 
   React.useEffect(() => {
-    fetchEvents({ setEvents });
-  }, []);
+    fetchPaginatedEvents({ setPageCount, setEvents, page, limit });
+  }, [page]);
 
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
@@ -55,6 +58,50 @@ function Event() {
         )
       : events;
     setEvents(filteredEvents);
+  };
+
+  const handlePageChange = (selectedPage) => {
+    setPage(selectedPage);
+  };
+
+  const renderPagination = () => {
+    const items = [];
+    for (let i = 1; i <= pageCount; i++) {
+      items.push(
+        <PaginationItem key={i}>
+          <PaginationLink
+            href="#"
+            onClick={() => handlePageChange(i)}
+            isActive={page === i ? true : false}
+          >
+            {i}
+          </PaginationLink>
+        </PaginationItem>,
+      );
+    }
+    return (
+      <Pagination>
+        <PaginationContent>
+          {page > 1 && (
+            <PaginationItem>
+              <PaginationPrevious
+                href="#"
+                onClick={() => handlePageChange(page - 1)}
+              />
+            </PaginationItem>
+          )}
+          {items}
+          {page < pageCount && (
+            <PaginationItem>
+              <PaginationNext
+                href="#"
+                onClick={() => handlePageChange(page + 1)}
+              />
+            </PaginationItem>
+          )}
+        </PaginationContent>
+      </Pagination>
+    );
   };
 
   return (
@@ -144,32 +191,7 @@ function Event() {
             </Table>
           </Card>
         </div>
-        <div className="flex justify-center">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
-                  2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div>
+        <div className="flex justify-center">{renderPagination()}</div>
       </main>
     </div>
   );

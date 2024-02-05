@@ -96,17 +96,20 @@ export const fetchNftMarket = async ({ setNfts }) => {
   }
 };
 
-export const fetchEvents = async ({ setEvents }) => {
+export const fetchPaginatedEvents = async ({
+  setPageCount,
+  setEvents,
+  page,
+  limit,
+}) => {
   try {
-    const response = await fetch(`/api/events`);
-    if (response.ok) {
-      const res = await response.json();
-      setEvents(res.data);
-    } else {
-      throw new Error("Error fetching block list");
-    }
+    const response = await fetch(`/api/events?page=${page}&limit=${limit}`);
+    const res = await response.json();
+    console.log(res.data.length);
+    setPageCount(Math.ceil(res.total / limit));
+    setEvents(res.data);
   } catch (error) {
-    console.error(error);
+    console.error("Failed to fetch events:", error);
   }
 };
 
