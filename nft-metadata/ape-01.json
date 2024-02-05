@@ -1,0 +1,15 @@
+{
+  "name": "Ape Ranbow Hat",
+  "description": "Bored Ape with rainbow hat",
+  "image": "https://ipfs.pchain.id/ipfs/QmacH7rrTyZodS5mXrn4NHKWV8pzgzLG43x3mt3DbH9ECx",
+  "attributes": [
+    {
+      "trait_type": "Hat",
+      "value": "Rainbow"
+    },
+    {
+      "trait_type": "Color",
+      "value": "Brown"
+    }
+  ]
+}
