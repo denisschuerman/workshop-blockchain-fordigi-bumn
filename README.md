@@ -1,14 +1,32 @@
 # Workshop Blockchain
 
 ## Requirements
-- NodeJS LTS
-- Ganache
-- Truffle SDK
+- [Ganache](https://trufflesuite.com/ganache/)
+- [NodeJs](https://nodejs.org/en/download/current)
+- [Postman](https://www.postman.com/downloads/)
+- [Code Editor Visual Studio](https://code.visualstudio.com/) atau [Zed](https://zed.dev/)
+- [Download Postman Collection](Workshop-Blockchain-Fordigi-BUMN.postman_collection.json)
 
-|- api // folder express server
-|- prisma //folder prisma model schema
-|- src // folder vite react project
-|- truffle // folder truffle project
+## Folder structure
+- api               // folder express server
+- prisma            // folder prisma model schema dengan sqlite
+- src               // folder vite react project
+- truffle           // folder truffle project
+
+## Step menjalankan project
+Step 1: Jalankan [Ganache](https://trufflesuite.com/ganache), copy pubKey dan privKey akun #1 ke `./api/utils.js`
+
+Step 2: Install dependencies dengan menjalankan perintah `$ yarn install`
+
+Step 3: Compile & deploy smart contract dengan menjalankan perintah `$ yarn deploy`
+
+Step 4: Migrasi database dengan menjalankan perintah `$ npx prisma db push`
+
+Step 5: Buka database explorer dengan menjalankan perintah `$ npx prisma studio`
+
+Step 6: Jalankan API server dengan menjalankan perintah `$ yarn server`
+
+Step 7: Jalankan React dev server dengan menjalankan perintah `$ yarn dev`
 
 ## Project Check
 - [x] Blockchain NodeJS API
@@ -36,4 +54,4 @@
     - [x] nft market items
     - [x] buy nft
 - [x] NFT Marketplace Client
-- [] pChain Client
+- [x] pChain Client

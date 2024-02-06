@@ -1,0 +1,818 @@
+{
+	"info": {
+		"_postman_id": "6f58b42f-e122-4766-b855-394144f7e28e",
+		"name": "Workshop-Blockchain-Fordigi-BUMN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24664776",
+		"_collection_link": "https://solar-meteor-912789.postman.co/workspace/Certus~35d2c974-81e8-4c62-8c3f-04a0ae43e453/collection/24664776-6f58b42f-e122-4766-b855-394144f7e28e?action=share&source=collection_link&creator=24664776"
+	},
+	"item": [
+		{
+			"name": "ballot",
+			"item": [
+				{
+					"name": "ballot winner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\"\n    ],\n    \"duration\": \"6000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/ballot/winners/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ballot",
+								"winners",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create ballot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\",\n        \"okay\",\n        \"mantap\"\n    ],\n    \"duration\": \"6000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/ballot/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ballot",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cast ballot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"bob\",\n    \"ballotIndex\": \"0\",\n    \"optionIndex\": \"0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/ballot/cast",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ballot",
+								"cast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "is user has vote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user\",\n    \"ballotIndex\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/ballot/has-vote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ballot",
+								"has-vote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ballot by index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\"\n    ],\n    \"duration\": \"6000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/ballot/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ballot",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ballot counter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\"\n    ],\n    \"duration\": \"6000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/ballot/counter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"ballot",
+								"counter"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wallet",
+			"item": [
+				{
+					"name": "get user wallet balance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\"\n    ],\n    \"duration\": \"6000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/wallet/bob",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"wallet",
+								"bob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer eth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"admin\",\n    \"to\": \"user\",\n    \"amount\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/wallet/transfer-eth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"wallet",
+								"transfer-eth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get admin balance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\"\n    ],\n    \"duration\": \"6000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/wallet/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"wallet",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer eth from admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"to\": \"user\",\n    \"amount\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/wallet/transfer-eth/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"wallet",
+								"transfer-eth",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer token from admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user\",\n    \"amount\": \"10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/wallet/transfer-token/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"wallet",
+								"transfer-token",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"admin\",\n    \"to\": \"bob\",\n    \"amount\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/wallet/transfer-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"wallet",
+								"transfer-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "nft-marketplace",
+			"item": [
+				{
+					"name": "Create Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"user\",\n    \"tokenUri\": \"https://ipfs.pchain.id/ipfs/QmcT2kyxmmqQYDApdGanVpecszqz7NUrA2GT7LXEmJfZZw\",\n    \"name\": \"AA\",\n    \"description\": \"BB\",\n    \"imageUrl\": \"https://ipfs.pchain.id/ipfs/QmacH7rrTyZodS5mXrn4NHKWV8pzgzLG43x3mt3DbH9ECx\",\n    \"attributes\": [[\"hat\",\"rainbow\"],[\"color\",\"brown\"]],\n    \"price\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/nft-market/create-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"nft-market",
+								"create-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buy nft",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"bob\",\n    \"tokenId\": \"10\",\n    \"value\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/nft-market/buy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"nft-market",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my nft",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/nft-market/my-nft/bob",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"nft-market",
+								"my-nft",
+								"bob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my nft list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/nft-market/my-item-list/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"nft-market",
+								"my-item-list",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "market items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/nft-market/market-items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"nft-market",
+								"market-items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blockchain",
+			"item": [
+				{
+					"name": "getBlocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/blockchain/blocks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"blockchain",
+								"blocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add blocks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"test\": \"hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/blockchain/blocks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"blockchain",
+								"blocks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todo",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "demo_i0dwnkn68yqitqr72uckbe94",
+								"type": "text"
+							},
+							{
+								"key": "x-wallet-key",
+								"value": "ODlhMTJhYmZjZDBmM2YyNjgxYjg2NzI4MDI1N2MzYWY=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signer\": \"0x10c0d37e8C409A9CE52292931a27928a1E9dF3AD\",\n    \"fn\": \"createTask\",\n    \"args\": [\"Halo guys\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.pchain.id/contracts/write/project_raesi7t75bk4uq9124r1lwty/besu/contract_cwghsneczo9hw9ufelvl5xz4",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pchain",
+								"id"
+							],
+							"path": [
+								"contracts",
+								"write",
+								"project_raesi7t75bk4uq9124r1lwty",
+								"besu",
+								"contract_cwghsneczo9hw9ufelvl5xz4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task Count",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "demo_i0dwnkn68yqitqr72uckbe94",
+								"type": "text"
+							},
+							{
+								"key": "x-wallet-key",
+								"value": "ODlhMTJhYmZjZDBmM2YyNjgxYjg2NzI4MDI1N2MzYWY=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.pchain.id/contracts/read/besu/contract_cwghsneczo9hw9ufelvl5xz4?fn=getTaskCount",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pchain",
+								"id"
+							],
+							"path": [
+								"contracts",
+								"read",
+								"besu",
+								"contract_cwghsneczo9hw9ufelvl5xz4"
+							],
+							"query": [
+								{
+									"key": "fn",
+									"value": "getTaskCount"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "demo_i0dwnkn68yqitqr72uckbe94",
+								"type": "text"
+							},
+							{
+								"key": "x-wallet-key",
+								"value": "ODlhMTJhYmZjZDBmM2YyNjgxYjg2NzI4MDI1N2MzYWY=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.pchain.id/contracts/read/besu/contract_cwghsneczo9hw9ufelvl5xz4?fn=tasks&args=0",
+							"protocol": "https",
+							"host": [
+								"api",
+								"pchain",
+								"id"
+							],
+							"path": [
+								"contracts",
+								"read",
+								"besu",
+								"contract_cwghsneczo9hw9ufelvl5xz4"
+							],
+							"query": [
+								{
+									"key": "fn",
+									"value": "tasks"
+								},
+								{
+									"key": "args",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user\",\n    \"password\": \"pass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"bob\",\n    \"password\": \"pass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user\",\n    \"password\": \"pass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"signer\": \"user\",\n    \"eventName\": \"Pemilu 2024\",\n    \"candidates\": [\n        \"Lutfi\",\n        \"Ikbal\",\n        \"Majid\"\n    ],\n    \"duration\": \"6000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
